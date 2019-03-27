@@ -1,0 +1,27 @@
+---
+title: "Obesity Graph"
+date: "3/27/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,message=FALSE)
+require(tidyverse)
+```
+
+### Make a Graph of the Obesity Data
+
+```{r read-data}
+library(zipcode)
+obesity = read_csv("obesity.csv") %>%
+  mutate(prevalence = obese / bmi) %>%
+  mutate(zip = clean.zipcodes(zip))
+```
+
+```{r plot}
+ggplot(obesity, aes(x=age,y=prevalence,fill=sex)) +
+  geom_violin() +
+  scale_fill_manual(values = c("hotpink","powderblue")) +
+  theme_bw()
+```
+
