@@ -19,9 +19,9 @@ obesity = read_csv("obesity.csv") %>%
 ```
 
 ```{r plot}
-ggplot(obesity, aes(x=age,y=prevalence,fill=sex)) +
+ggplot(obesity, aes(x=age,y=prevalence,fill=sex, main = "Obesity Prevalence")) +
   geom_violin() +
-  scale_fill_manual(values = c("hotpink","powderblue")) +
+  scale_fill_manual(values = c("purple","green")) +
   theme_bw()
 ```
 
